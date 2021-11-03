@@ -6,7 +6,7 @@
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 10:39:24 by mmaxime-          #+#    #+#             */
-/*   Updated: 2021/10/28 11:24:41 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2021/11/02 13:35:59 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (0);
 	tot_len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	join = (char *)malloc(sizeof(join) * tot_len);
+	join = (char *)malloc(sizeof(char) * tot_len);
 	if (join == NULL)
 		return (0);
 	i = 0;

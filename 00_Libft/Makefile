@@ -6,7 +6,7 @@
 #    By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/28 12:23:50 by mmaxime-          #+#    #+#              #
-#    Updated: 2021/11/01 12:55:32 by mmaxime-         ###   ########.fr        #
+#    Updated: 2021/11/02 17:57:40 by mmaxime-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,10 @@ BONUS_OBJS		=	$(BONUS_FILES:.c=.o)
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-					ar -rc $(NAME) $(OBJS)
+					ar -rcs $(NAME) $(OBJS)
 
 bonus:			$(BONUS_OBJS)
-					ar -rc $(NAME) $(BONUS_OBJS)
+					ar -rcs $(NAME) $(BONUS_OBJS)
 
 clean:
 					$(RM) $(OBJS) $(BONUS_OBJS)

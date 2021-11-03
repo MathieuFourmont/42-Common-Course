@@ -6,7 +6,7 @@
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 16:53:49 by mmaxime-          #+#    #+#             */
-/*   Updated: 2021/10/19 17:41:22 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2021/11/02 10:49:06 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@
 ** terminating `\0'.
 */
 
-#include "libft.h"
+/*#include "libft.h"*/
 
 char	*ft_strchr(const char *s, int c)
 {
-	while ((char)c != *s && *s != '\0')
+	while (*s || c == '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
-	if (c == *s)
-		return ((char *)s);
+	}
 	return (0);
 }
