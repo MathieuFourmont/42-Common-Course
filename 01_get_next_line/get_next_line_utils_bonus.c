@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 14:24:03 by mmaxime-          #+#    #+#             */
-/*   Updated: 2021/11/10 12:29:50 by mmaxime-         ###   ########.fr       */
+/*   Created: 2021/11/10 12:27:23 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/11/10 12:28:25 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
