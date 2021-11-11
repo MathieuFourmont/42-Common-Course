@@ -12,12 +12,14 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *save)
 {
 	size_t	len;
 
 	len = 0;
-	while (s[len] != '\0')
+	if (save == 0)
+		return (0);
+	while (save[len] != '\0')
 		len++;
 	return (len);
 }
@@ -49,29 +51,24 @@ char	*ft_return_line(char **save)
 
 char	*get_next_line(int fd)
 {
-	char		*temp;
-	char		*buffer;
+	char		buffer[BUFFER_SIZE + 1];
 	static char	*save[OPEN_MAX];
 	int			ret;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
+	ret = BUFFER_SIZE;
+	save[fd] = (char *)malloc(sizeof(char));
+	if (fd < 0 || BUFFER_SIZE < 1 || save == NULL)
 		return (0);
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buffer == NULL)
-		return (0);
-	ret = read(fd, buffer, BUFFER_SIZE);
-	while (ret > 0)
+	save[0] = '\0';
+	while (!ft_strchr(save[fd], '\n') && ret == BUFFER_SIZE)
 	{
-		buffer[ret] = '\0';
-		if (!save[fd])
-			save[fd] = ft_strdup("");
-		temp = ft_strjoin(save[fd], buffer);
-		free (save[fd]);
-		save[fd] = temp;
-		if (ft_strchr(save[fd], '\n'))
-			break ;
 		ret = read(fd, buffer, BUFFER_SIZE);
+		if (ret == -1)
+			return (0);
+		else if (ret == 0)
+			break ;
+		buffer[ret] = '\0';
+		save[fd] = ft_strjoin(save[fd], buffer);
 	}
-	free (buffer);
 	return (ft_return_line(&save[fd]));
 }
