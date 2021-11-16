@@ -6,31 +6,20 @@
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:24:03 by mmaxime-          #+#    #+#             */
-/*   Updated: 2021/11/10 12:29:50 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2021/11/15 14:16:45 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlen(const char *s)
 {
-	size_t	srcsize;
-	size_t	i;
+	size_t	len;
 
-	if (!dst || !src)
-		return (0);
-	srcsize = ft_strlen(src);
-	i = 0;
-	if (dstsize != 0)
-	{
-		while (src[i] && i < (dstsize - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (srcsize);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }
 
 char	*ft_strjoin(char *s1, char const *s2)
@@ -62,8 +51,8 @@ char	*ft_strjoin(char *s1, char const *s2)
 char	*ft_strdup(const char *s)
 {
 	char	*dst;
-	size_t	len;
-	size_t	i;
+	int		len;
+	int		i;
 
 	if (!s)
 		return (0);
@@ -74,9 +63,10 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	while (i < len)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)s)[i];
+		dst[i] = s[i];
 		i++;
 	}
+	dst[i] = '\0';
 	return (dst);
 }
 
