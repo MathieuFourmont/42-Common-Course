@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/30 09:48:18 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/11/30 09:51:13 by mmaxime-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_conversion(va_list *args, const char *format, int i, int *counter)
@@ -23,8 +35,8 @@ void	ft_conversion(va_list *args, const char *format, int i, int *counter)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int	i;
-	int	counter;
+	int		i;
+	int		counter;
 
 	i = 0;
 	counter = 0;

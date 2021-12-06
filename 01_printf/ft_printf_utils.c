@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/30 09:48:52 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/11/30 09:53:44 by mmaxime-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putchar(char c)
@@ -8,7 +20,7 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	if (!str)
@@ -23,7 +35,7 @@ int	ft_putstr(char *str)
 
 int	ft_putnbr(int nb)
 {
-	int		counter;
+	int				counter;
 	unsigned int	nbr;
 
 	counter = 0;
