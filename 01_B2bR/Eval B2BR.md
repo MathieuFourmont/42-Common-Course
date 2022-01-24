@@ -33,6 +33,8 @@
 6. Difference between aptitude and apt
 
    Aptitude is a high-level package manager while APT is lower-level package manager which can be used by other higher-level package managers.
+   Aptitude is text-based but user friendly.
+   Apt-get is command-line, you have to know the exact name of the package.
 
 7. What is APPArmor
 
