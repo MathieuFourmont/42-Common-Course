@@ -230,28 +230,6 @@
 
     -------------------------------------------------------------------------------------------------------------------------------------
 
-    BONUS
-
-    1. Partition
-
-       lsblk
-
-    2. Wordpress 
-
-       `cd /var/www/html`
-
-       connect to 127.0.0.1
-
-    3. Services:
-
-       lighttpd => `sudo service lighttpd status`
-
-       http => `sudo ufw status` = port 80
-
-       php => `dpkg -l | grep php8.0`
-
-       mariadb => `sudo mariadb` `SHOWDATABASES;`
-
 BONUS
 
 1. Partition
