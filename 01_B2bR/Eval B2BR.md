@@ -229,3 +229,23 @@
     `sudo crontab -e`
 
     Delete the lines from @reboot
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+BONUS
+
+1. Partition
+   `lsblk`
+   
+2. Wordpress
+   `cd /var/www/html`
+   connect to 127.0.0.1
+   Services:
+      lighttpd => `sudo service lighttpd status`
+      http => `sudo ufw status` = port 80
+      php => `dpkg -l | grep php8.0`
+      mariadb => `sudo mariadb` `SHOWDATABASES;`
+3. OpenVpn
+   `sudo ufw status` = port 1194/udp
+   `sudo service openvpn status`
+ 
