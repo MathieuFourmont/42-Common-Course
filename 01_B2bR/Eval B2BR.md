@@ -262,4 +262,5 @@ BONUS
 
    You can safely access your network remotely and so access your mailbox, folders, files, ... from outside  of the network.
 
-   
+   `sudo service openvpn status`
+   `sudo ufw status` = port 1194/udp
