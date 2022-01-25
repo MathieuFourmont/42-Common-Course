@@ -33,8 +33,6 @@
 6. Difference between aptitude and apt
 
    Aptitude is a high-level package manager while APT is lower-level package manager which can be used by other higher-level package managers.
-   Aptitude is text-based but user friendly.
-   Apt-get is command-line, you have to know the exact name of the package.
 
 7. What is APPArmor
 
@@ -229,23 +227,61 @@
     `sudo crontab -e`
 
     Delete the lines from @reboot
-    
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    -------------------------------------------------------------------------------------------------------------------------------------
+
+    BONUS
+
+    1. Partition
+
+       lsblk
+
+    2. Wordpress 
+
+       `cd /var/www/html`
+
+       connect to 127.0.0.1
+
+    3. Services:
+
+       lighttpd => `sudo service lighttpd status`
+
+       http => `sudo ufw status` = port 80
+
+       php => `dpkg -l | grep php8.0`
+
+       mariadb => `sudo mariadb` `SHOWDATABASES;`
 
 BONUS
 
 1. Partition
+
    `lsblk`
-   
-2. Wordpress
+
+2. Worpress
+
    `cd /var/www/html`
+
    connect to 127.0.0.1
-   Services:
-      lighttpd => `sudo service lighttpd status`
-      http => `sudo ufw status` = port 80
-      php => `dpkg -l | grep php8.0`
-      mariadb => `sudo mariadb` `SHOWDATABASES;`
-3. OpenVpn
-   `sudo ufw status` = port 1194/udp
-   `sudo service openvpn status`
- 
+
+3. Services
+
+   lighttpd => `sudo service lighttpd status`
+
+   http => `sudo ufw status` = port 80
+
+   php => `dpkg -l | grep php8.0`
+
+   mariadb => `sudo mariadb` `SHOWDATABASES;`
+
+4. OpenVpn
+
+   Open source connection protocol, one of the safest on the market.
+
+   VPN = Virtual Private Network
+
+   A VPN connection establishes a secure connection between the client and internet => all the data traffic is routed through an encrypted virtual tunnel.
+
+   You can safely access your network remotely and so access your mailbox, folders, files, ... from outside  of the network.
+
+   
