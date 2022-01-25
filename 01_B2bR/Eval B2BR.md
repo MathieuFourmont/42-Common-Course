@@ -236,7 +236,7 @@ BONUS
 
    `lsblk`
 
-2. Worpress
+2. Wordpress
 
    `cd /var/www/html`
 
