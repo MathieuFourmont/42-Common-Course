@@ -104,7 +104,7 @@ There is also a tester attached to this project (credits to @Hevhove). The teste
 To run the tester you need to make the code and then run the following command
 
 ```
-./test.sh
+bash test.sh
 ```
 
 I'm also using this [python_visualizer](https://github.com/o-reo/push_swap_visualizer) to show the operations performed.
