@@ -97,15 +97,6 @@ My push_swap sorts
 
 The algorithm is good enough to pass the project with 84%.
 
-## Bonus
-
-The bonus part is to write a program named checker, which will get as an argument the stack A formatted as a list of integers. Checker will then wait and read instructions on the standard input. Once all the instructions have been read, checker will execute them on the stack received as an argument (After giving the instructions press ctrl + d).
-
-If after executing those instructions, stack a is actually sorted and b is empty, then
-checker must display "OK" else "KO". If checker arguments are invalid it displays Error.
-
-The checker code can be found in the checker.c file in this repository.
-
 ## Tester
 
 There is also a tester attached to this project. The tester checks the validity of arguments and the algorithm itself on different numbers and different stack sizes (line 6). It will work with the checker_Mac program and will display "ok" or "ko" if the stack is well sorted or not and the number of actions.
