@@ -99,7 +99,7 @@ The algorithm is good enough to pass the project with 84%.
 
 ## Tester
 
-There is also a tester attached to this project (&copy Hevhove). The tester checks the validity of arguments and the algorithm itself on different numbers and different stack sizes (line 6). It will work with the checker_Mac program and will display "ok" or "ko" if the stack is well sorted or not and the number of actions.
+There is also a tester attached to this project (&copy; Hevhove). The tester checks the validity of arguments and the algorithm itself on different numbers and different stack sizes (line 6). It will work with the checker_Mac program and will display "ok" or "ko" if the stack is well sorted or not and the number of actions.
 
 To run the tester you need to make the code and then run the following command
 
