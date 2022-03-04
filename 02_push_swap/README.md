@@ -127,3 +127,4 @@ Run `make`. after which the project will be compiled. Then run the command
 ```
 where ARG is just a sample of numbers. To run the checker you need to write this command
 ```
+ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker_Mac $ARG
