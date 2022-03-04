@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:06:41 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:28:31 by mmaxime-         ###   ########.fr       */
+/*   Created: 2021/10/28 10:41:15 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/11/02 10:46:38 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/*
+** SYNOPSIS : locate character in string
+** LIBRARY : <string.h>
+** DESC : The strrchr() function returns a pointer to
+** the last occurrence of the character c in the string s.
+*/
 
-void	ft_push(t_list **to, t_list **from)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	t_list	*curr_top;
-	t_list	*new_top;
+	int	len;
 
-	if (!*from)
-		return ;
-	curr_top = *from;
-	new_top = (*from)->next;
-	curr_top->next = NULL;
-	ft_lstadd_front(to, curr_top);
-	*from = new_top;
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	ft_push(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_list **b, t_list **a)
-{
-	ft_push(b, a);
-	write(1, "pb\n", 3);
+	len = ft_strlen(s);
+	while (len >= 0 || c == '\0')
+	{
+		if (s[len] == (char)c)
+			return ((char *)(s + len));
+		len--;
+	}
+	return (0);
 }

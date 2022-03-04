@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:06:41 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:28:31 by mmaxime-         ###   ########.fr       */
+/*   Created: 2022/02/21 11:24:25 by mmaxime-          #+#    #+#             */
+/*   Updated: 2022/02/22 17:31:51 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(t_list **to, t_list **from)
+void	radix_sort(t_list **a, t_list **b)
 {
-	t_list	*curr_top;
-	t_list	*new_top;
+	int		bit;
+	int		pos;
+	int		size;
+	int		max_bits;
+	t_list	*ref_a;
 
-	if (!*from)
-		return ;
-	curr_top = *from;
-	new_top = (*from)->next;
-	curr_top->next = NULL;
-	ft_lstadd_front(to, curr_top);
-	*from = new_top;
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	ft_push(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_list **b, t_list **a)
-{
-	ft_push(b, a);
-	write(1, "pb\n", 3);
+	bit = 0;
+	ref_a = *a;
+	size = ft_lstsize(ref_a);
+	max_bits = ft_get_max_bits(a);
+	while (bit < max_bits)
+	{
+		pos = 0;
+		while (pos++ < size)
+		{
+			ref_a = *a;
+			if (((ref_a->index >> bit) & 1) == 1)
+				ra(a);
+			else
+				pb(b, a);
+		}
+		while (ft_lstsize(*b) != 0)
+			pa(a, b);
+		bit++;
+	}
 }

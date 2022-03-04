@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:06:41 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:28:31 by mmaxime-         ###   ########.fr       */
+/*   Created: 2021/10/18 16:26:02 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/10/19 10:46:14 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/*
+** SYNOPSIS : fill a byte string with a byte value
+** LIBRARY : <string.h>
+** DESC : The memset() function writes len bytes of value c
+** (converted to an unsigned char) to the string b.
+*/
 
-void	ft_push(t_list **to, t_list **from)
+#include "libft.h"
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_list	*curr_top;
-	t_list	*new_top;
+	size_t	i;
 
-	if (!*from)
-		return ;
-	curr_top = *from;
-	new_top = (*from)->next;
-	curr_top->next = NULL;
-	ft_lstadd_front(to, curr_top);
-	*from = new_top;
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	ft_push(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_list **b, t_list **a)
-{
-	ft_push(b, a);
-	write(1, "pb\n", 3);
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
 }

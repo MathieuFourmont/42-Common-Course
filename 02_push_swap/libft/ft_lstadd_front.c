@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:06:41 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/02/22 16:28:31 by mmaxime-         ###   ########.fr       */
+/*   Created: 2021/10/29 11:06:41 by mmaxime-          #+#    #+#             */
+/*   Updated: 2021/11/01 11:23:44 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/*
+** SYNOPSIS: add new element at beginning of list
+** LIBRARY: N/A
+** DESC: Adds the element ’new’ at the beginning of the list.
+*/
 
-void	ft_push(t_list **to, t_list **from)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	t_list	*curr_top;
-	t_list	*new_top;
-
-	if (!*from)
+	if (!new)
 		return ;
-	curr_top = *from;
-	new_top = (*from)->next;
-	curr_top->next = NULL;
-	ft_lstadd_front(to, curr_top);
-	*from = new_top;
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	ft_push(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_list **b, t_list **a)
-{
-	ft_push(b, a);
-	write(1, "pb\n", 3);
+	if (!alst)
+	{
+		*alst = new;
+		return ;
+	}
+	new->next = *alst;
+	*alst = new;
 }

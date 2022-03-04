@@ -6,7 +6,7 @@
 /*   By: mmaxime- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:33:30 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/02/09 17:11:43 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:10:41 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_rev_rotate(t_list **stack)
 			final_nb = final_nb->next;
 		while (before_final_nb->next->next)
 			before_final_nb = before_final_nb->next;
-		before_final_next = NULL;
+		before_final_nb->next = NULL;
 		final_nb->next = *stack;
 		*stack = final_nb;
 	}
