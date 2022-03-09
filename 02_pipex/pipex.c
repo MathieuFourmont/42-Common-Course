@@ -13,8 +13,10 @@ int main(int argc, char **argv)
     pid_t   pid2;
 
     if (argc != 5)
+    {
         printf("Correct input: ./pipex file1 cmd1 cmd2 file2");
-        return (0);
+        return (0);        
+    }
     if (pipe(fd) == -1)
         return (1);
     pid1 = fork();
@@ -30,7 +32,7 @@ int main(int argc, char **argv)
         close(fd[0]);
         close(fd[1]);
         /*ft_split(argv[2], ' ');*/
-        if (execlp(argv[2], argv[2], NULL) == -1) // 1st process is replaced by the ping program
+        if (execlp(argv[2], argv[2], NULL) == -1) // 1st process is replaced by the program in argv[2]
             perror("First command failed/does not exist");
     }
     pid2 = fork();
