@@ -6,7 +6,7 @@
 /*   By: miam <miam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:23:03 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/03/21 18:08:13 by miam             ###   ########.fr       */
+/*   Updated: 2022/03/22 16:45:20 by miam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,41 @@ int	handle_keycodes(int keycode, t_vars *vars)
 {
 	if(keycode == 53) // = ESC
 		close_win(vars);
+	return (0);
+}
+
+int	mouse_hook(int button, int x, int y, t_vars *vars)
+{
+	char	*str;
+
+	str = "Hello from mouse_hook!\n";
+	x = 5;
+	y = 5;
+	if (button == 1) // = left button of the mouse
+		mlx_string_put(vars->mlx, vars->win, x, y, 0x00FF0000, str);
+	return (0);
+}
+
+int	render_next_frame(t_vars *vars)
+{
+	t_data	img;
+	int		x;
+	int		y;
+
+	x = 0;
+	img.img = mlx_new_image(vars->mlx, 640, 480);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lenght, &img.endian);
+	while(x < 640)
+	{
+		y = 0;
+		while (y < 480)
+		{
+			my_mlx_pixel_put(&img, x, y, 0x00FF0000);
+			y++;
+		}
+		x++;
+	}
+	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
 	return (0);
 }
 
@@ -133,9 +168,9 @@ int	handle_keycodes(int keycode, t_vars *vars)
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 500, 500);
 	mlx_loop(mlx);
-}*/
+}
 
-int	main(void) // circles
+int	main(void) // circles + window closing event
 {
 	t_data	img;
 	int		x;
@@ -174,5 +209,32 @@ int	main(void) // circles
 	}
 	mlx_hook(vars.win, 02, (1L << 2), &handle_keycodes, &vars); // 02 for keypress
 	mlx_hook(vars.win, 17, (1L << 17), &close_win, &vars); // define the closing of the program by clicking the red cross of the window 
+	mlx_loop(vars.mlx);
+}
+
+int	main(void) // str is appearing when a key is pressed
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+	//mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_mouse_hook(vars.win, &mouse_hook, &vars);
+	mlx_loop(vars.mlx);
+}*/
+
+int	main()
+{
+	t_vars	vars;
+	int	red;
+	int	blue;
+	int	green;
+
+	red = 0x00FF0000;
+	green = 0x0000FF00;
+	blue = 0x000000FF;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+	mlx_loop_hook(vars.mlx, &render_next_frame, &vars);
 	mlx_loop(vars.mlx);
 }
