@@ -6,7 +6,7 @@
 /*   By: miam <miam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:08:15 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/03/22 11:54:21 by miam             ###   ########.fr       */
+/*   Updated: 2022/03/23 19:40:02 by miam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,27 @@
 ** ------------------------------ STRUCT DECLARATION ----------------------
 */
 
-typedef	struct s_vars
+typedef	struct s_fdf
 {
+	float	x;
+	float	y;
+	float	z;
 	void	*mlx;
 	void	*win;
-}				t_vars;
-
-
-typedef struct s_data
-{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
-}				t_data;
+	int		color;
+	int		width;
+	int		height;
+}				t_fdf;
 
 /*
 ** ------------------------------ PROTOTYPES -----------------------------
 */
+
+void	ft_perror(char *str);
 
 #endif
