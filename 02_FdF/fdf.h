@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miam <miam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:08:15 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/03/24 20:01:09 by miam             ###   ########.fr       */
+/*   Updated: 2022/03/28 15:38:47 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
-# include "get_next_line.h"
+# include "libft/get_next_line.h"
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
@@ -36,7 +36,13 @@ typedef	struct s_fdf
 {
 	//float	x;
 	//float	y;
+	int		width;
+	int		height;
 	int		**z_matrix;
+	int		zoom;
+	int		color;
+	int		shift_x;
+	int		shift_y;
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -44,9 +50,6 @@ typedef	struct s_fdf
 	int		bits_per_pixel;
 	int		line_lenght;
 	int		endian;
-	//int		color;
-	int		width;
-	int		height;
 }				t_fdf;
 
 /*
@@ -57,5 +60,7 @@ void	ft_error(char *str);
 void	ft_free(char **ptr);
 void	read_map(char *map_file, t_fdf *data);
 void	bresenham(float x, float y, float x1, float y1, t_fdf *data);
+void	draw_line_between_dots(t_fdf *data);
+int		close_win(t_fdf *vars);
 
 #endif

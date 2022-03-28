@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: miam <miam@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 10:25:00 by mmaxime-          #+#    #+#              #
-#    Updated: 2022/03/24 17:02:41 by miam             ###   ########.fr        #
+#    Updated: 2022/03/28 15:56:57 by mmaxime-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,10 @@ $(NAME):	$(OBJS) $(LIBFT) $(PRINTF)
 					$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 debug:		$(LIBFT) $(PRINTF)
-				$(CC) -g $(CFLAGS) -I$(INCLUDES) $(LIBFT) $(PRINTF) $(SRCS) -o $(NAME)
+				$(CC) -g $(CFLAGS) -I$(INCLUDES) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) $(LIBFT) $(PRINTF)
 
 valgrind:
-				valgrind --leak-check=full --show-leak-kinds=all --trackorigins=yes ./$(NAME)
+				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 clean:
 				$(RM) $(OBJS)
