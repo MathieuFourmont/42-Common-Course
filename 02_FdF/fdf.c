@@ -6,7 +6,7 @@
 /*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:23:03 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/03/28 15:47:41 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:11:16 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,42 @@
 
 int	key_handler(int key, t_fdf *data)
 {
-	ft_printf("%d\n", key);
+	//ft_printf("%d\n", key);
 	if(key == 53) // = ESC
-		close_win(data);
-	if (key == 126) // = Up arrow
-		data->shift_y -= 10;
-	if (key == 124) // = Right arrow
-		data->shift_x += 10;
-	if (key == 125) // Down arrow
-		data->shift_y += 10;
-	if (key == 123) // Left arrow
-		data->shift_x -= 10;
-	mlx_clear_window(data->img, data->win);
-	draw_line_between_dots(data);
+	{
+		free_struct(data);
+		exit(0);
+	}
 	return (0);
 }
 
-/*void	set_param(t_fdf *param)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	param.x = 0;
-}*/
+	char	*dst;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		dst = data->addr + (y * data->line_lenght
+		+ x * (data->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
+}
+
+void	init_data(t_fdf *data)
+{
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "FDF / mmaxime-");
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bits_per_pixel,
+	&data->img.line_lenght, &data->img.endian);
+	data->zoom = 25;
+	data->z_zoom = 1;
+	data->shift_x = 825;
+	data->shift_y = 325;
+	data->rad = 0.523599;
+	data->is_iso = true;
+	draw_line_between_dots(data);
+}
 
 int	main(int argc, char **argv)
 {
@@ -43,16 +59,11 @@ int	main(int argc, char **argv)
 		ft_error("Usage: ./fdf map.fdf");
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	if (!data)
-		ft_error("malloc error on data\n");
+		ft_error("Malloc error on data");
 	read_map(argv[1], data);
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, 1000, 1000, "FDF");
-	data->zoom = 20;
-	data->img = mlx_new_image(data->mlx, 1000, 1000);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_lenght, &data->endian);
-	draw_line_between_dots(data);
-	mlx_key_hook(data->win, key_handler, data);
+	init_data(data);
 	mlx_hook(data->win, 17, (1L << 17), &close_win, data);
+	mlx_hook(data->win, 2, 0, key_handler, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

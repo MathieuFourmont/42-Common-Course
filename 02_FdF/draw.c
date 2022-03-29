@@ -6,68 +6,86 @@
 /*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 19:11:20 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/03/28 15:39:56 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:04:29 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define MAX1(a, b) (a > b ? a : b)
-#define MOD(a) ((a < 0) ? -a : a)
-
-float	mod(float i)
+void	set_params(t_position *dots_line, t_fdf *data)
 {
-	return ((i < 0) ? -i : i);
+	int	z;
+	int	z1;
+
+	z = data->z_matrix[(int)dots_line->y][(int)dots_line->x] * data->z_zoom;
+	z1 = data->z_matrix[(int)dots_line->y1][(int)dots_line->x1] * data->z_zoom;
+	//---------COLOR---------
+	if (z > 0 || z1 > 0)
+		data->color = 0xFF0000 + (z * 20);
+	else if (z < 0 || z1 < 0)
+		data->color = 0x42F1B1;
+	else
+		data->color = 0xFFFFFF;
+	//---------ZOOM---------
+	dots_line->x *= data->zoom;
+	dots_line->x1 *= data->zoom;
+	dots_line->y *= data->zoom;
+	dots_line->y1 *= data->zoom;
+	//---------ISOMETRIC---------
+	if (data->is_iso)
+	{
+		isometric(&dots_line->x, &dots_line->y, z, data->rad);
+		isometric(&dots_line->x1, &dots_line->y1, z1, data->rad);
+	}
+	dots_line->x += data->shift_x;
+	dots_line->y += data->shift_y;
+	dots_line->x1 += data->shift_x;
+	dots_line->y1 += data->shift_y;
 }
 
-void	isometric(float *x, float *y, int z)
-{
-	*x = (*x - *y) * cos(0.8);
-	*y = (*x + *y) * sin(0.8) - z;
-}
-
-void	bresenham(float x, float y, float x1, float y1, t_fdf *data)
+void	bresenham(t_position dots_line, t_fdf *data)
 {
 	float	x_step;
 	float	y_step;
 	int		max;
-	int		z;
-	int		z1;
 
-	z = data->z_matrix[(int)y][(int)x];
-	z1 = data->z_matrix[(int)y1][(int)x1];
-	//---------ZOOM---------
-	x *= data->zoom;
-	y *= data->zoom;
-	x1 *= data->zoom;
-	y1 *= data->zoom;
-	//---------COLOR---------
-	data->color = (z || z1) ? 0xe80c0c : 0xffffff;
-	x_step = x1 - x;
-	y_step = y1 - y;
-	isometric(&x, &y, z);
-	isometric(&x1, &y1, z1);
-	x += data->shift_x;
-	y += data->shift_y;
-	x1 += data->shift_x;
-	y1 += data->shift_y;
-	x_step = x1 - x;
-	y_step = y1 - y;
-	max = MAX1(MOD(x_step), MOD(y_step));
+	set_params(&dots_line, data);
+	x_step = dots_line.x1 - dots_line.x;
+	y_step = dots_line.y1 - dots_line.y;
+	max = who_is_max(abs_value(x_step), abs_value(y_step));
 	x_step /= max;
 	y_step /= max;
-	while((int)(x - x1) || (int)(y - y1))
+	while((int)(dots_line.x - dots_line.x1) || (int)(dots_line.y - dots_line.y1))
 	{
-		mlx_pixel_put(data->img, data->win, x, y, data->color);
-		x += x_step;
-		y += y_step;
+		my_mlx_pixel_put(&data->img, dots_line.x, dots_line.y, data->color);
+		dots_line.x += x_step;
+		dots_line.y += y_step;
 	}
+}
+
+t_position	get_dots_line_x(t_position dots_line, int x, int y)
+{
+	dots_line.x = x;
+	dots_line.y = y;
+	dots_line.x1 = x + 1;
+	dots_line.y1 = y;
+	return (dots_line);
+}
+
+t_position	get_dots_line_y(t_position dots_line, int x, int y)
+{
+	dots_line.x = x;
+	dots_line.y = y;
+	dots_line.x1 = x;
+	dots_line.y1 = y + 1;
+	return (dots_line);
 }
 
 void	draw_line_between_dots(t_fdf *data)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_position	dots_line;
 
 	y = 0;
 	while (y < data->height)
@@ -76,12 +94,18 @@ void	draw_line_between_dots(t_fdf *data)
 		while (x < data->width)
 		{
 			if (x < data->width - 1)
-				bresenham(x, y, x + 1, y, data); // draw right lines
+			{
+				dots_line = get_dots_line_x(dots_line, x, y);
+				bresenham(dots_line, data); // draw right lines
+			}
 			if (y < data->height - 1)
-			bresenham(x, y, x, y + 1, data); // draw down lines
+			{
+				dots_line = get_dots_line_y(dots_line, x, y);
+				bresenham(dots_line, data); // draw down lines
+			}
 			x++;
 		}
 		y++;
 	}
-	return ;
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
