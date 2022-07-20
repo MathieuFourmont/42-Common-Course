@@ -26,7 +26,7 @@
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdbool.h>
