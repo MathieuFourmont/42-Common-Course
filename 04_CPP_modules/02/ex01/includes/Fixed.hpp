@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:33:12 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/11/03 09:33:12 by marvin           ###   ########.fr       */
+/*   Created: 2022/12/05 18:07:01 by mmaxime-          #+#    #+#             */
+/*   Updated: 2022/12/05 18:07:01 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <math.h>
 
 class Fixed
 {

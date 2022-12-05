@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 09:31:09 by mmaxime-          #+#    #+#             */
-/*   Updated: 2022/11/03 09:31:09 by marvin           ###   ########.fr       */
+/*   Created: 2022/12/05 18:06:49 by mmaxime-          #+#    #+#             */
+/*   Updated: 2022/12/05 18:06:49 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
 // Constructors & destructor
 
@@ -23,12 +23,14 @@ Fixed::Fixed() : _n( 0 )
 Fixed::Fixed( int const i ) : _n( i )
 {
 	std::cout << "Int constructor called" << std::endl;
+	this->_n = this->_n << this->_binaryPoint;
 	return ;
 }
 
 Fixed::Fixed( float const f ) : _n( f )
 {
 	std::cout << "Float constructor called" << std::endl;
+	this->_n = round( f * ( 1 << this->_binaryPoint ) );
 	return ;
 }
 
@@ -63,7 +65,7 @@ void	Fixed::setRawBits( int const raw )
 
 Fixed &	Fixed::operator=( Fixed const & rhs )
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if ( this != &rhs )
 		this->_n = rhs.getRawBits();
 	return ( *this );  
@@ -73,18 +75,18 @@ Fixed &	Fixed::operator=( Fixed const & rhs )
 
 float	Fixed::toFloat( void ) const
 {
-
+	return ( ( float )this->_n / ( 1 << this->_binaryPoint ));
 }
 
 int		Fixed::toInt( void ) const
 {
-
+	return ( this->_n  >> this->_binaryPoint );
 }
 
 // Non member function
 
 std::ostream &	operator<<( std::ostream & o, Fixed const & rhs)
 {
-	o << rhs.getRawBits();
+	o << rhs.toFloat();
 	return (o);
 }
