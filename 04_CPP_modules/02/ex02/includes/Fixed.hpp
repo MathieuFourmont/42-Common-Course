@@ -17,36 +17,46 @@
 #include <string>
 
 class Fixed
-// Forme canonique = (au moins)
-// - 1 constructeur par défaut
-// - 1 constructeur de recopie
-// - 1 opérateur d'assignation
-// - 1 destructeur
 {
 	public:
-		// Constructeur & destructeur
-		Fixed(); // constructeur par défaut
-		Fixed( int const n); // constructeur paramétrique
-		Fixed( Fixed const & src ); // constructeur de recopie
+		// Constructors & destructor
+		Fixed();
+		Fixed( int const i );
+		Fixed( float const f );
+		Fixed( Fixed const & src );
 		~Fixed();
 
-		// Accesseur
-		int	getValue( void ) const;
+		// Accessor
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 
-		// Surcharges d'opérateurs de comparaison
-
-
-		// Surcharges d'opérateurs arithmétiques (Operator overload)
-		Fixed &	operator=( Fixed const & rhs ); // opérateur d'assignation
-		Fixed	operator+( Fixed const & rhs ) const; // membre gauche, caché, est l'instance courante (this) et le membre droit est rhs (Right Hand Side)
+		// Operator overload
+		Fixed &	operator=( Fixed const & rhs );
+		Fixed	operator+( Fixed const & rhs ) const;
 		Fixed	operator-( Fixed const & rhs ) const;
 		Fixed	operator*( Fixed const & rhs ) const;
 		Fixed	operator/( Fixed const & rhs ) const;
+		// >
+		// <
+		// >=
+		// <=
+		// ==
+		// !=
+		// i++
+		// ++i
+		// i--
+		// --i
 
-		// Surcharges d'opérateurs d'incrémentation et décrémentation
+		// Member functions
+		float		toFloat( void ) const;
+		int			toInt( void ) const;
+		static int	min(int const &x, int const &y);
+		static int	max(int &x, int &y);
+		static int	max(int const &x, int const &y);
 
 	private:
-		int	_n;
+		int					_n;
+		static int const	_binaryPoint = 8;
 
 };
 
