@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#ifndef DIAMONDTRAP_H
+# define DIAMONDTRAP_H
 
 #include "./ClapTrap.hpp"
 #include "./ScavTrap.hpp"

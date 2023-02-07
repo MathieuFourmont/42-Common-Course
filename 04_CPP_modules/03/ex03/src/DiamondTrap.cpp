@@ -15,7 +15,7 @@
 DiamondTrap::DiamondTrap()
 {
 	_name = "";
-	ClapTrap::_name = _name + "_clap_name";
+	ClapTrap::_name = _name + "_clap_name"; // :: -> opérateur de résolution de portée, sert à déterminer quelle fonction ou variable utiliser
 	std::cout << "Wow! A DiamondTrap has been created!" << std::endl;
 	return ;
 }
@@ -45,11 +45,14 @@ DiamondTrap::~DiamondTrap()
 
 DiamondTrap & DiamondTrap::operator=( DiamondTrap const & rhs )
 {
-	this->ClapTrap::_name = rhs.ClapTrap::_name;
-	this->_name = rhs._name;
-	this->_hitPoints = rhs._hitPoints;
-	this->_energyPoints = rhs._energyPoints;
-	this->_attackDamage = rhs._attackDamage;
+	if( this != &rhs )
+	{
+		this->ClapTrap::_name = rhs.ClapTrap::_name;
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
 	return ( *this );
 }
 

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef FRAGTRAP_H
+# define FRAGTRAP_H
 
 #include "./ClapTrap.hpp"
 
