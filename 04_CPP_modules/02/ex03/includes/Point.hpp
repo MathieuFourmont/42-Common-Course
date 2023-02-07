@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef POINT_H
+# define POINT_H
 
 #include <iostream>
 #include <string>

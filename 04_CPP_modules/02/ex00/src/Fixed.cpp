@@ -46,7 +46,7 @@ void	Fixed::setRawBits( int const raw )
 Fixed &	Fixed::operator=( Fixed const & rhs )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if ( this != &rhs )
+	if ( this != &rhs ) // ici on vérifie que l'objet n'est pas le même que celui reçu en argument, c'est à dire que leurs adresses mémoire sont bien différentes
 		this->_n = rhs.getRawBits();
 	return ( *this );  
 }
