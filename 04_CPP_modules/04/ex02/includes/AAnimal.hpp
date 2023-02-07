@@ -10,23 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-# define ANIMAL_H
+#ifndef AANIMAL_H
+# define AANIMAL_H
 
 #include <iostream>
 #include <string>
 
-class Animal
+class AAnimal // préfixe A = convention pour indiquer que la classe est abstraite.
+// classe abrstaite = certains comportements sont définis, et d'autres ne le sont pas + la classe elle même ne peut pas être instanciée
+// une classe est abstraite lorsqu'elle possède au moins une fonction membre virtuelle pure 
+// pour pouvoir être instanciée, une classe qui hérite de cette classe abstraite (ex: Dog) va devoir implémenter les comportements définis comme abstraits dans la parent
 {
 	public:
-		Animal();
-		Animal( Animal const & src );
-		virtual ~Animal(); // le destructeur doit être virtual si au moins une méthode est déclarée comme virtual
+		AAnimal();
+		AAnimal( AAnimal const & src );
+		virtual ~AAnimal();
 
-		Animal &			operator=( Animal const & rhs );
+		AAnimal &			operator=( AAnimal const & rhs );
 
 		std::string const	getType() const;
-		virtual void		makeSound() const;
+		virtual void		makeSound() const = 0; // fonction membre virtuelle pure
 
 	protected:
 		std::string			type;

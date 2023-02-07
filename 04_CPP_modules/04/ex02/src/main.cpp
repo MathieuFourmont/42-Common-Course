@@ -10,34 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/AAnimal.hpp"
 #include "../includes/Dog.hpp"
 #include "../includes/Cat.hpp"
-#include "../includes/WrongAnimal.hpp"
-#include "../includes/WrongCat.hpp"
 
 int	main()
 {
-	const Animal*		unknown = new Animal();
-	const Animal*		bob = new Dog();
-	const Animal*		felix = new Cat();
-	const WrongAnimal*	wrongFelix = new WrongCat();
+	//AAnimal*	undefined = new AAnimal(); // ne doit pas fonctioner car définie comme abstraite -> ne peut pas être instanciée
+	AAnimal*	bob = new Dog();
+	AAnimal*	felix = new Cat();
 
 	std::cout << std::endl;
+
+	// std::cout << undefined->makeSound() << " " << std::endl; // ne doit pas fonctionner car méthode définie pure
 	std::cout << bob->getType() << " " << std::endl;
 	bob->makeSound();
 	std::cout << felix->getType() << " " << std::endl;
 	felix->makeSound();
-	unknown->makeSound();
-	std::cout << wrongFelix->getType() << " " << std::endl;
-	wrongFelix->makeSound();
 
 	std::cout << std::endl;
 
-	delete( unknown );
+	// delete( undefined );
 	delete( bob );
 	delete( felix );
-	delete( wrongFelix );
-
+	
 	return ( 0 );
 }

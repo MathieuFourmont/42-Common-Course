@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:00:51 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:00:51 by mmaxime-         ###   ########.fr       */
+/*   Created: 2023/02/02 11:49:04 by mmaxime-          #+#    #+#             */
+/*   Updated: 2023/02/02 11:49:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#ifndef ICE_H
+# define ICE_H
 
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Cat : public Animal
+class Ice : public AMateria
 {
 	public:
-		Cat();
-		Cat( Cat const & src );
-		~Cat();
+		Ice();
+		Ice( Ice const & src );
+		~Ice();
 
-		Cat &	operator=( Cat const & rhs );
+		Ice &		operator=( Ice const & rhs );
 
-		void	makeSound() const;
+		AMateria*	clone() const;
+		void		use( ICharacter& target );
+
+	private:
+		/* data */
 };
 
 #endif

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:00:51 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:00:51 by mmaxime-         ###   ########.fr       */
+/*   Created: 2023/01/26 11:02:05 by mmaxime-          #+#    #+#             */
+/*   Updated: 2023/01/26 11:02:05 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#include "../includes/Animal.hpp"
+#include "../includes/Dog.hpp"
+#include "../includes/Cat.hpp"
 
-#include <iostream>
-#include <string>
-#include "Animal.hpp"
-
-class Cat : public Animal
+int	main()
 {
-	public:
-		Cat();
-		Cat( Cat const & src );
-		~Cat();
+	Animal*	tab[50];
+	
+	for( int i = 0; i < 25; i++)
+		tab[i] = new Dog();
+	for( int i = 25; i < 50; i++)
+		tab[i] = new Cat();
+	for ( int i = 0; i < 50; i++)
+		delete( tab[i] );
 
-		Cat &	operator=( Cat const & rhs );
-
-		void	makeSound() const;
-};
-
-#endif
+	return ( 0 );
+}

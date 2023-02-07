@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/AAnimal.hpp"
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
-	std::cout << "Animal default constructor called" << std::endl;
+	std::cout << "AAnimal default constructor called" << std::endl;
 	return ;
 }
 
-Animal::Animal( Animal const & src )
+AAnimal::AAnimal( AAnimal const & src )
 {
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << "AAnimal copy constructor called" << std::endl;
 	this->type = src.type;
 	return ;
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	std::cout << "Animal destructor called" << std::endl;
+	std::cout << "AAnimal destructor called" << std::endl;
 	return ;
 }
 
-Animal &	Animal::operator=( Animal const & rhs )
+AAnimal &	AAnimal::operator=( AAnimal const & rhs )
 {
 	if ( this != &rhs )
 		this->type = rhs.type;
 	return ( *this );
 }
 
-std::string const	Animal::getType() const
+std::string const	AAnimal::getType() const
 {
 	return ( type );
 }
 
-void	Animal::makeSound() const
+void	AAnimal::makeSound() const
 {
-	std::cout << "I'm an undefined animal" << std::endl;
+	std::cout << "I'm an undefined Aanimal" << std::endl;
 	return ;
 }

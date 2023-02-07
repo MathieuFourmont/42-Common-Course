@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef DOG_H
+# define DOG_H
 
 #include <iostream>
 #include <string>
@@ -27,10 +27,6 @@ class Dog : public Animal
 		Dog &	operator=( Dog const & rhs );
 
 		void	makeSound() const;
-
-	private:
-		/* data */
-
 };
 
 #endif
