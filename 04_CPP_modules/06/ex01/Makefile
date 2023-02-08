@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/07 11:03:52 by marvin            #+#    #+#              #
-#    Updated: 2023/02/07 11:03:52 by marvin           ###   ########.fr        #
+#    Created: 2023/02/08 19:14:17 by marvin            #+#    #+#              #
+#    Updated: 2023/02/08 19:14:17 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 #Output
 
-NAME		=	convert
+NAME		=	serialize
 
 #Paths
 
@@ -26,9 +26,8 @@ OBJ_PATH	=	obj/
 
 #Files
 
-SRCS		=	convert.cpp \
-				main.cpp
-INCS		=	$(addprefix $(INC_PATH), convert.hpp)
+SRCS		=	main.cpp
+INCS		=	$(addprefix $(INC_PATH), main.hpp)
 OBJS		=	$(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 #Macros
@@ -69,6 +68,6 @@ clean :
 
 fclean :			clean
 						$(RM) $(NAME)
-						$(RM) -R convert.dSYM
+						$(RM) -R serialize.dSYM
 
 .PHONY:				all clean fclean re

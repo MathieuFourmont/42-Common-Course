@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/07 11:03:52 by marvin            #+#    #+#              #
-#    Updated: 2023/02/07 11:03:52 by marvin           ###   ########.fr        #
+#    Created: 2023/02/08 19:56:43 by marvin            #+#    #+#              #
+#    Updated: 2023/02/08 19:56:43 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 #Output
 
-NAME		=	convert
+NAME		=	Base
 
 #Paths
 
@@ -26,9 +26,9 @@ OBJ_PATH	=	obj/
 
 #Files
 
-SRCS		=	convert.cpp \
+SRCS		=	Base.cpp \
 				main.cpp
-INCS		=	$(addprefix $(INC_PATH), convert.hpp)
+INCS		=	$(addprefix $(INC_PATH), Base.hpp A.hpp B.hpp C.hpp)
 OBJS		=	$(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 #Macros
@@ -69,6 +69,6 @@ clean :
 
 fclean :			clean
 						$(RM) $(NAME)
-						$(RM) -R convert.dSYM
+						$(RM) -R Base.dSYM
 
 .PHONY:				all clean fclean re
