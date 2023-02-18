@@ -6,7 +6,7 @@
 /*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:08:26 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/02/16 15:53:11 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:55:05 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ void	Span::printSpan()
 {
 	std::vector<int>::const_iterator	it;
 
-	for ( it = _span.begin(); it != _span.end(); it++ )
+	for ( it = _span.begin(); it != _span.end(); ++it )
 		std::cout << *it << " ";
 }
