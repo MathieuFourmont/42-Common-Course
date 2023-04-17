@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:58:16 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/02/16 15:52:56 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:14:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ int main()
 		std::cout << "The shortest span is: " << sp0.shortestSpan() << std::endl;
 		std::cout << std::endl;
 	}
-	catch(const std::exception& e)
+	catch( const std::exception& e )
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	try
 	{
 		std::cout << "The longest span is: " << sp0.longestSpan() << std::endl;
 		std::cout << std::endl;
 	}
-	catch(const std::exception& e)
+	catch( const std::exception& e )
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 
@@ -144,7 +144,7 @@ int main()
 	std::cout << std::endl;
 
 	// Normal behavior large amount of elements:
-	Span sp4 = Span(1000);
+	Span sp4 = Span(10);
 
 	sp4.fillRandom();
 

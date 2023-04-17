@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/02/18 09:49:43 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:09:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void test_subject(void) {
 	MutantStack<int>::iterator ite = mstack.end();
 
 	std::cout << "Test to increment and to decrement: initial pos: " << *it << std::endl;
-	++it; 	// just testing that it is possible to increment
+	++it;
  	std::cout << "pos after increment: " << *it << std::endl;
-	--it;	// and decrement.
+	--it;
 	std::cout << "pos after decrement: " << *it << std::endl;
 	std::cout << "Print of the whole stack:" << std::endl;
 	while ( it != ite )
@@ -74,7 +74,7 @@ static void test_10_numbers(void) {
 		std::cout << *it << std::endl;
 	}
 
-	// Testing Deep Copy
+	// Test copie profonde
 	std::stack<int> s(mstack);
 
 	std::cout << std::endl;
@@ -85,7 +85,7 @@ static void test_10_strings(void) {
 
 	MutantStack<std::string> mstack;
 
-	// adding all numbers as strings (doing a stream conversion)
+	// on ajoute ici tous les nb en strings (stream conversion)
 	// https://cplusplus.com/reference/sstream/stringstream/str/ 
 	for (int i = 0; i < 10; i++) {
 		std::ostringstream ss;
@@ -102,7 +102,7 @@ static void test_10_strings(void) {
 		std::cout << *it << std::endl;
 	}
 
-	// Testing Deep Copy
+	// Test copie profonde
 	std::stack<std::string> s(mstack);
 
 	std::cout << std::endl;
@@ -114,7 +114,6 @@ static void test_10_lists(void) {
 
 	std::list<int> lstack;
 
-	// https://www.geeksforgeeks.org/list-cpp-stl/ 
 	for (int i = 0; i < 10; i++) {
 		lstack.push_back(i); 
 	}
@@ -128,7 +127,7 @@ static void test_10_lists(void) {
 		std::cout << *it << std::endl;
 	}
 
-	// Testing Deep Copy
+	// Test copie profonde
 	std::list<int> s(lstack);
 
 	std::cout << std::endl;

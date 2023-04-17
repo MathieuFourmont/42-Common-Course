@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:08:26 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/02/17 11:55:05 by mmaxime-         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:35:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 Span::Span() : _span( std::vector<int>() )
 {
-	_span.reserve( 0 );
+	_span.reserve( 0 ); // request a change in capacity
 	return ;
 }
 
 Span::Span( unsigned int n ) : _span( std::vector<int>() )
 {
-	_span.reserve( n );
+	_span.reserve( n ); // Requests that the vector capacity be at least enough to contain n elements
 	return ;
 }
 
@@ -51,12 +51,12 @@ void	Span::addNumber( int nb )
 {
 	try
 	{
-		if ( _span.capacity() == _span.size() )
+		if ( _span.capacity() == _span.size() ) // capacity = size of allocated storage capacity
 			throw ( std::out_of_range( "Vector is full!" ) );
 		else
 			_span.push_back( nb );
 	}
-	catch(const std::exception& e)
+	catch( const std::exception& e )
 	{
 		std::cerr << e.what() << std::endl;
 	}	
@@ -73,9 +73,9 @@ unsigned int	Span::shortestSpan() const
 	unsigned int		diff;
 
 	std::sort( tmp.begin(), tmp.end() );
-	for ( size_t i = 1; i < _span.size(); i++ )
+	for ( size_t i = 1; i < tmp.size(); i++ )
 	{
-		diff = _span[i] - _span[i - 1];
+		diff = tmp[i] - tmp[i - 1];
 		res = ( diff < res ) ? diff : res;
 	}
 	return ( res );
@@ -91,11 +91,17 @@ unsigned int	Span::longestSpan() const
 	return ( max - min );
 }
 
+unsigned int	randomNb()
+{
+	//srand( time( NULL ) );
+	return ( rand() % 100 );
+}
+
 void	Span::fillRandom()
 {
 	_span.assign( _span.capacity(), 0 );
 	srand( time( NULL ) );
-	std::generate( _span.begin(), _span.end(), std::rand );
+	std::generate( _span.begin(), _span.end(), randomNb );
 }
 
 void	Span::printSpan()
