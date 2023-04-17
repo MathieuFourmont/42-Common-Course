@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/04/05 11:09:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:03:24 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static void test_10_strings(void) {
 	MutantStack<std::string> mstack;
 
 	// on ajoute ici tous les nb en strings (stream conversion)
-	// https://cplusplus.com/reference/sstream/stringstream/str/ 
 	for (int i = 0; i < 10; i++) {
 		std::ostringstream ss;
 		ss << i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaxime- <mmaxime-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:08:26 by mmaxime-          #+#    #+#             */
-/*   Updated: 2023/04/04 14:35:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:06:20 by mmaxime-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,11 @@ unsigned int	Span::longestSpan() const
 	return ( max - min );
 }
 
-unsigned int	randomNb()
-{
-	//srand( time( NULL ) );
-	return ( rand() % 100 );
-}
-
 void	Span::fillRandom()
 {
 	_span.assign( _span.capacity(), 0 );
 	srand( time( NULL ) );
-	std::generate( _span.begin(), _span.end(), randomNb );
+	std::generate( _span.begin(), _span.end(), std::rand );
 }
 
 void	Span::printSpan()
