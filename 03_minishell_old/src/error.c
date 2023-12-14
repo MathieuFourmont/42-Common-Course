@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hvan-hov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hvan-hov <hvan-hov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 16:42:41 by hvan-hov          #+#    #+#             */
-/*   Updated: 2021/10/29 15:56:57 by hvan-hov         ###   ########.fr       */
+/*   Created: 2022/06/02 13:54:12 by hvan-hov          #+#    #+#             */
+/*   Updated: 2022/06/02 17:57:34 by hvan-hov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-void	ft_bzero(void *s, size_t n)
+void	error_message(char *s, int code, t_cmd *cmd)
 {
-	ft_memset(s, '\0', n);
+	ft_printf(s);
+	cmd->exit_status = code;
+	return ;
 }

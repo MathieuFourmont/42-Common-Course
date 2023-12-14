@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hvan-hov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hvan-hov <hvan-hov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 16:42:41 by hvan-hov          #+#    #+#             */
-/*   Updated: 2021/10/29 15:56:57 by hvan-hov         ###   ########.fr       */
+/*   Created: 2022/05/23 19:29:55 by hvan-hov          #+#    #+#             */
+/*   Updated: 2022/06/07 17:46:06 by hvan-hov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-void	ft_bzero(void *s, size_t n)
+int	exec_pwd(void)
 {
-	ft_memset(s, '\0', n);
+	char	*cwd;
+
+	cwd = NULL;
+	cwd = getcwd(cwd, 0);
+	if (!cwd)
+		return (-1);
+	ft_printf("%s\n", cwd);
+	free(cwd);
+	return (0);
 }

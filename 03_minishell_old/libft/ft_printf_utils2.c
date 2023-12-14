@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_utils2.c                                  :+:      :+:    :+:   */
+/*   ft_printf_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvan-hov <hvan-hov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 17:52:04 by hvan-hov          #+#    #+#             */
-/*   Updated: 2022/06/13 18:05:11 by hvan-hov         ###   ########.fr       */
+/*   Created: 2021/12/05 19:28:42 by hvan-hov          #+#    #+#             */
+/*   Updated: 2021/12/06 15:54:58 by hvan-hov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "ft_printf.h"
 
-int line_empty(const char *s) {
-  int i;
-
-  i = 0;
-  while (s[i] && cst(s[i]))
-    i++;
-  if (i == (int)ft_strlen(s))
-    return (1);
-  return (0);
+int	ft_putunbr(size_t i, int ret)
+{
+	if (i > 9)
+	{
+		ret += ft_putunbr(i / 10, 0);
+	}
+	ft_putchar(i % 10 + '0');
+	ret++;
+	return (ret);
 }
 
-int cst(char c) {
-  if (c == CHAR_WHITESPACE)
-    return (1);
-  else if (c == CHAR_TAB)
-    return (1);
-  else
-    return (0);
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (*str != '\0')
+	{
+		len++;
+		str++;
+	}
+	return (len);
 }

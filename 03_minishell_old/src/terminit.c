@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_utils2.c                                  :+:      :+:    :+:   */
+/*   terminit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hvan-hov <hvan-hov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 17:52:04 by hvan-hov          #+#    #+#             */
-/*   Updated: 2022/06/13 18:05:11 by hvan-hov         ###   ########.fr       */
+/*   Created: 2022/05/20 12:46:58 by mmaxime-          #+#    #+#             */
+/*   Updated: 2022/06/08 16:44:56 by hvan-hov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int line_empty(const char *s) {
-  int i;
+int	init_term(void)
+{
+	struct termios	term;
 
-  i = 0;
-  while (s[i] && cst(s[i]))
-    i++;
-  if (i == (int)ft_strlen(s))
-    return (1);
-  return (0);
-}
-
-int cst(char c) {
-  if (c == CHAR_WHITESPACE)
-    return (1);
-  else if (c == CHAR_TAB)
-    return (1);
-  else
-    return (0);
+	if (tcgetattr(0, &term) != 0)
+	{
+		ft_putstr_fd("error in tcgetattr", STDERR_FILENO);
+		return (-1);
+	}
+	term.c_lflag &= ~ECHOCTL;
+	if (tcsetattr(0, TCSANOW, &term) != 0)
+	{
+		ft_putstr_fd("error in tcsetattr", STDERR_FILENO);
+		return (-1);
+	}
+	return (0);
 }

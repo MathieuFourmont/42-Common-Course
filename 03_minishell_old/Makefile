@@ -1,21 +1,18 @@
+SRCS	= $(wildcard src/*c)
 NAME	= minishell
 NAME_DEBUG = minishell.dSYM
-
-SRCS	= $(wildcard src/*c)
-OBJS	= $(SRCS:c=o)
-
 INCS	= inc/minishell.h
-LIBS	= -lreadline
-
+42INCS	= /Users/$(USER)/.brew/opt/readline/include
+42LINK 	= /Users/$(USER)/.brew/opt/readline/lib
+OBJS	= $(SRCS:c=o)
 CC		= gcc -g
 CFLAGS	= -Wall -Wextra -Werror `pkg-config readline --cflags` #-fsanitize=address
-
 RM		= rm -f
-
 LIBFT	= libft/libft.a
 LIBFT_DIR = libft
+USER = mmaxime-
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debu
 
 all: $(NAME)
 
@@ -23,13 +20,13 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -I$(INCS) -c $< -o ${<:.c=.o}
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -I$(INCS) $(LIBS) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -I$(INCS) -I$(42INCS) -lreadline -L $(42LINK) -o $(NAME) $(OBJS) $(LIBFT)
 	
 $(LIBFT):
 	make -C $(LIBFT_DIR) --silent
 
 debug: $(LIBFT)
-	$(CC) -g $(CFLAGS) -I$(INCS) -lreadline -L $(LIBFT) $(SRCS) -o $(NAME)
+	$(CC) -g $(CFLAGS) -I$(INCS) -I$(42INCS) -lreadline -L $(42LINK) $(LIBFT) $(SRCS) -o $(NAME)
 
 valgrind:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
@@ -44,3 +41,4 @@ fclean: clean
 	make -s fclean -C $(LIBFT_DIR)
 
 re:	fclean all
+
