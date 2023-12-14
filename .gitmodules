@@ -1,0 +1,3 @@
+[submodule "03_minishell"]
+	path = 03_minishell
+	url = https://github.com/Hevhove/minishell
