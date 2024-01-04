@@ -1,5 +1,7 @@
 # LIBFT: Your very own first library
 
+<img width="101" alt="Capture d'écran 2024-01-04 175726" src="https://github.com/MathieuFourmont/42-Common-Course/assets/91331763/9f83aa36-b819-4ae8-8392-54c2a2113fc4">
+
 ## Project Goal
 
 The goal of the first 42 project is to gain a deeper understanding in the functions we take for granted every day and are quick to use in other higher level languages. We'll write a bunch of string and memory manipulation functions for the mandatory part as well as linked-list manipulation functions for the bonus part.
