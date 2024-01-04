@@ -1,8 +1,6 @@
 # LIBFT: Your very own first library
 
-<img width="101" alt="Capture d'écran 2024-01-04 175726" src="https://github.com/MathieuFourmont/42-Common-Course/assets/91331763/9f83aa36-b819-4ae8-8392-54c2a2113fc4">
-
-<img width="394" alt="image" src="https://github.com/MathieuFourmont/42-Common-Course/assets/91331763/e57a6c8a-8ccd-40e8-b1dd-d11a52ec2252">
+<img width="574" alt="Capture d'écran 2024-01-04 180519" src="https://github.com/MathieuFourmont/42-Common-Course/assets/91331763/bcab70e9-8020-4990-ba5f-461c5aeac644">
 
 ## Project Goal
 
