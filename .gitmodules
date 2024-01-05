@@ -3,4 +3,4 @@
 	url = https://github.com/Hevhove/minishell
 [submodule "05_ft_irc"]
 	path = 05_ft_irc
-	url = https://github.com/davfront/42_ft_irc/tree/master_docs
+	url = https://github.com/davfront/42_ft_irc
